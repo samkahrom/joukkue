@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+
+<head>
+<title>Joukkue Lista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+	<div class="col-md-4">
+	<h1>Turnauksen Joukkueet</h1>
+	</div>
+	<div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-warning"/>
+		</form>
+	</div>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Joukkueen nimi</th>
+			<th>Pelaajien määrä</th>
+			<th>Taitotaso</th>
+			<th>Poisto</th>
+			<th>Muokkaus</th>
+			
+		</tr>
+
+		<tr th:each="joukkue : ${joukkueet}">
+			<td th:text=${joukkue.Nimi}></td>
+			<td th:text=${joukkue.Maara}></td>
+			<td th:text=${joukkue.Taito}></td>
+			<td><a class="btn btn-warning"
+				th:href="@{/delete/{id}(id=${joukkue.Id})}">Poista</a></td>
+			<td><a class="btn btn-warning"
+				th:href="@{/editjoukkue/{id}(id=${joukkue.Id})}">Muokkaa</a></td>
+		</tr>
+
+	</table>
+	<a class="btn btn-warning" href="/addjoukkue">Lisää</a>
+	</div>
+</body>
+</html>

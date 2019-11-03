@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<head>
+<title>Muokkaus</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h2>Muokkaa Joukkuetta</h2>
+	<div>
+		<form action="#" th:action="@{save}" th:object=${joukkue} method="post">
+			<input type="hidden" th:field="${joukkue.Id}" class="form-control" />
+			<p>
+				Nimi: <input type="text" th:field="${joukkue.Nimi}" />
+			</p>
+			<p>
+				Pelaajat: <input type="text" th:field="${joukkue.Maara}" />
+			</p>
+			<p>
+				Taitotaso: <input type="text" th:field="${joukkue.Taito}" />
+			</p>
+			<input class="btn btn-warning" type="submit" value="Tallenna" />
+		</form>
+	</div>
+</body>
+</html>

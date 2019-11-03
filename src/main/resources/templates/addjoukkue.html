@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+
+<head>
+<title>Lisää Joukkue</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Lisää uusi joukkue turnaukseen</h1>
+	<div>
+		<form th:object="${joukkue}" th:action="@{save}" action="#" method="post">
+		
+			<label for="Nimi">Joukkueen Nimi: </label> <input type="text" id="Nimi"
+				th:field="*{Nimi}" />
+			<div style="clear: both; display: block; height: 10px;"></div>	
+			
+			<label for="Maara">Pelaajien Määrä: </label> <input type="text" th:field="*{Maara}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="Taito">Taitotaso 1-5: </label> <input type="text" th:field="*{Taito}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input class="btn btn-warning" type="submit" value="Lisää"></input>
+		</form>
+	</div>
+</body>
+</html>
